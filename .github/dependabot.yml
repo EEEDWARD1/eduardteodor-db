@@ -8,4 +8,4 @@ updates:
   - package-ecoystem: "github-actions"
     directory: "/"
     schedule:
-      internval: "weekly"
+      interval: "weekly"
