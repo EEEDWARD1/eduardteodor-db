@@ -1,4 +1,4 @@
-#eduardteodor-db
+# eduardteodor-db
 
 PostgreSQL database infrastructure and sql migration management for my personal project [eduardteodor.co.uk](https://www.eduardteodor.co.uk)
 
