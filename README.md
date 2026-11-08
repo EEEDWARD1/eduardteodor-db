@@ -23,3 +23,12 @@ eduardteodor-db/
 ├── compose.dev.yml         # Development Docker Compose configuration
 └── README.md
 ```
+
+## Running the migration service
+
+Ensure that you run the following bash commands inside /script
+```bash
+set -a
+source .env
+set +a
+```
