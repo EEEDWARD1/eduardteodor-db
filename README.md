@@ -16,9 +16,9 @@ eduardteodor-db/
 ├── .github/                # CI/CD workflows
 ├── migrations/             # Versioned SQL migrations
 │   ├── 0001_INITIAL_CREATE.sql
-│   └── 0002_SECOND_TABLE.sql
-├── scripts/
-│   └── migrate.sh          # Migration runner
+│   ├── ...sql
+│   └── ...sql
+├── MigrationRunner/        # Migration runner
 ├── .env.sample             # Example environment configuration
 ├── compose.dev.yml         # Development Docker Compose configuration
 └── README.md
@@ -26,9 +26,23 @@ eduardteodor-db/
 
 ## Running the migration service
 
-Ensure that you run the following bash commands inside /script
+Required Docker Compose and .NET 10 SDK.
+From the repo root, create your configuration:
 ```bash
-set -a
-source .env
-set +a
+cp .env.sample .env
 ```
+
+Update `.env` with your database credentials. Ensure `DEFAULT_CONNECTION` matches your PostgreSQL settings and `SCRIPTS=../migrations`.
+Start PostgreSQL:
+```bash
+docker compose -f compose.dev.yml up -d --wait db
+```
+Run the service from the `MigrationRunner` directory:
+```bash
+cd MigrationRunner
+dotnet run -- test
+dotnet run -- status
+dotnet run -- migrate
+dotnet run -- help
+```
+The Service Automatically loads `../.env`
